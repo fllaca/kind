@@ -183,6 +183,7 @@ func runArgsForNode(node *config.Node, name string, args []string) []string {
 	// convert mounts and port mappings to container run args
 	args = append(args, generateMountBindings(node.ExtraMounts...)...)
 	args = append(args, generatePortMappings(node.ExtraPortMappings...)...)
+	args = append(args, node.ExtraDockerOptions...)
 
 	// finally, specify the image to run
 	return append(args, node.Image)
